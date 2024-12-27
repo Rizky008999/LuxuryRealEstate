@@ -223,42 +223,42 @@
         </div>
             </section>
         
-            <!-- Order Form Section -->
-            <section id="order" class="container py-5">
-                <h2 class="text-center mb-4" style="color: #ffd700;">Order Your Dream Property</h2>
-                <div class="form-section">
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="property" class="form-label">Selected Property</label>
-                            <select class="form-select" id="property" required>
-                                <option value="Luxury Villa">Luxury Villa</option>
-                                <option value="Penthouse Suite">Penthouse Suite</option>
-                                <option value="Beachfront Mansion">Beachfront Mansion</option>
-                                <option value="Modern Apartment">Modern Apartment</option>
-                                <option value="City Loft">City Loft</option>
-                                <option value="Lake House">Lake House</option>
-                                <option value="Country Estate">Country Estate</option>
-                                <option value="Luxury Cottage">Luxury Cottage</option>
-                                <option value="Suburban Home">Suburban Home</option>
-                                <option value="Rustic Cabin">Rustic Cabin</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Additional Notes</label>
-                            <textarea class="form-control" id="message" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-dark w-100">Submit Order</button>
-                    </form>
-                </div>
-            </section>
+          <!-- Order Form Section -->
+<section id="order" class="container py-5">
+    <h2 class="text-center mb-4" style="color: #ffd700;">Order Your Dream Property</h2>
+    <div class="form-section">
+        <form id="orderForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="property" class="form-label">Selected Property</label>
+                <select class="form-select" id="property" required>
+                    <option value="Luxury Villa">Luxury Villa</option>
+                    <option value="Penthouse Suite">Penthouse Suite</option>
+                    <option value="Beachfront Mansion">Beachfront Mansion</option>
+                    <option value="Modern Apartment">Modern Apartment</option>
+                    <option value="City Loft">City Loft</option>
+                    <option value="Lake House">Lake House</option>
+                    <option value="Country Estate">Country Estate</option>
+                    <option value="Luxury Cottage">Luxury Cottage</option>
+                    <option value="Suburban Home">Suburban Home</option>
+                    <option value="Rustic Cabin">Rustic Cabin</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Additional Notes</label>
+                <textarea class="form-control" id="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Submit Order</button>
+        </form>
+    </div>
+</section>
         
             <!-- Footer -->
             <footer>
@@ -267,28 +267,36 @@
         
              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
    <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTXHYBNQ2Wq8N_lbz_U-EleRYtWY0IAgL-taxsMwrTZ3gGOGPUVDQDIEOttcztkRZmbA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx8xyZEKKfixWT3DKPa2nI2w82e_6BAbUxff12vl4KOz74xaODu7dQfPMagyVkXd5Nshg/exec';
 
-    document.querySelector('#orderForm').addEventListener('submit', async (e) => {
+   document.querySelector('#orderForm').addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const form = e.target;
-        const formData = new FormData(form);
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            property: document.getElementById('property').value,
+            message: document.getElementById('message').value
+        };
 
         try {
             const response = await fetch(scriptURL, {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
 
-            if (response.ok) {
-                alert('Formulir berhasil dikirim!');
-                form.reset();
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert('Order submitted successfully!');
+                document.querySelector('#orderForm').reset();
             } else {
-                throw new Error('Gagal mengirim formulir. Coba lagi.');
+                alert(`Failed: ${result.message}`);
             }
         } catch (error) {
-            alert(error.message);
+            alert(`Error: ${error.message}`);
         }
     });
 </script>
