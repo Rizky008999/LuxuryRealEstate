@@ -266,11 +266,11 @@
             </footer>
         
              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwHoMpybm10CwHqIpZyt5ITkqf3HEBw7vDY2qLDodCwI2jbpvl6-1j0a0wXLfyg2yCDaQ/exec';
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzWG1xKn1UoPyxdWQI09Z2Ud2vk1jYRKSo_KKRWZiV_Q9M64cns64pOARog9qtUis7-/exec';
   const form = document.querySelector('#orderForm');
   const submitButton = form.querySelector('button[type="submit"]');
-  
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -284,7 +284,7 @@
     try {
       const response = await fetch(scriptURL, {
         method: 'POST',
-        body: new FormData(form), // Menggunakan FormData untuk mempermudah
+        body: new FormData(form) // Kirim data langsung dalam format FormData
       });
 
       if (response.ok) {
