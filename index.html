@@ -227,18 +227,18 @@
 <section id="order" class="container py-5">
     <h2 class="text-center mb-4" style="color: #ffd700;">Order Your Dream Property</h2>
     <div class="form-section">
-        <form id="orderForm" name="submit-to-google-sheet">
+        <form id="orderForm">
             <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" required>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" required>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
                 <label for="property" class="form-label">Selected Property</label>
-                <select class="form-select" id="property" required>
+                <select class="form-select" id="property" name="property" required>
                     <option value="Luxury Villa">Luxury Villa</option>
                     <option value="Penthouse Suite">Penthouse Suite</option>
                     <option value="Beachfront Mansion">Beachfront Mansion</option>
@@ -253,55 +253,59 @@
             </div>
             <div class="mb-3">
                 <label for="message" class="form-label">Additional Notes</label>
-                <textarea class="form-control" id="message" rows="4"></textarea>
+                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-dark w-100">Submit Order</button>
         </form>
     </div>
 </section>
-        
-            <!-- Footer -->
-            <footer>
-                <p>&copy; 2024 Luxury Realty. All rights reserved.</p>
-            </footer>
-        
-             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzHgNqsj-lKjbVuNymwKY43zNRSvpwi4rbxZ4q37PAPDqvdQLIqUOVszXODBq3E0FooUg/exec';
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Luxury Realty. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // URL Web App dari Google Apps Script
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwRIPqwsAWkTnLbNiWoe9YvKqaRuR95rNSTd8o4tzk2aq3xrngZjCighgOa2Pin7R0zFg/exec';
   const form = document.querySelector('#orderForm');
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Tampilkan loading
+    // Ubah tombol menjadi status "loading"
     submitButton.innerHTML = `
       <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
       Submitting...
     `;
     submitButton.disabled = true;
 
+    // Kirim data ke Google Apps Script
     try {
+      const formData = new FormData(form); // Ambil data formulir
       const response = await fetch(scriptURL, {
         method: 'POST',
-        body: new FormData(form) // Kirim data langsung dalam format FormData
+        body: formData // Kirim data dalam format FormData
       });
 
+      // Tangani respons dari server
       if (response.ok) {
         const result = await response.json();
-        if (result.status === 'success') {
+        if (result.result === 'success') {
           alert('Order submitted successfully!');
           form.reset(); // Reset formulir setelah berhasil
         } else {
-          alert(`Failed: ${result.message}`);
+          alert(`Submission failed: ${result.error || 'Unknown error'}`);
         }
       } else {
-        alert(`Error: ${response.statusText}`);
+        alert(`Request failed: ${response.statusText}`);
       }
     } catch (error) {
       alert(`Error: ${error.message}`);
     } finally {
-      // Sembunyikan loading
+      // Kembalikan tombol ke status semula
       submitButton.innerHTML = 'Submit Order';
       submitButton.disabled = false;
     }
