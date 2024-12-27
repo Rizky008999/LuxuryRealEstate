@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Real Estate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #000;
+            padding: 1rem;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffd700;
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-link {
+            color: #f8f9fa;
+            margin-right: 15px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffd700;
+        }
+        .hero {
+            background: url('your-hero-image.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+        }
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.8rem;
+            margin-top: 20px;
+        }
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #181818;
+            color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .form-section {
+            background-color: #202020;
+            color: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        .form-section label {
+            color: #f8f9fa;
+        }
+        .form-section button {
+            background-color: #ffd700;
+            color: #000;
+        }
+        footer {
+            background-color: #000;
+            color: #ffd700;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Luxury Realty</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#order">Order Form</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="text-center">
+            <h1>Discover Luxury Living</h1>
+            <p>Your dream property is just a click away.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="container py-5">
+        <h2 class="text-center mb-4" style="color: #ffd700;">Our Properties</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/06/18/01/57/condo-2414328_960_720.jpg" class="card-img-top" alt="Property 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Luxury Villa</h5>
+                        <p class="card-text">$4,000,000</p>
+                        <p>A stunning villa with modern amenities and breathtaking views.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/10/19/40/buildings-2626957_960_720.jpg" class="card-img-top" alt="Property 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Penthouse Suite</h5>
+                        <p class="card-text">$3,500,000</p>
+                        <p>A luxurious penthouse in the heart of the city.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/10/05/06/condo-2618421_1280.jpg" class="card-img-top" alt="Property 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Beachfront Mansion</h5>
+                        <p class="card-text">$5,000,000</p>
+                        <p>An exquisite mansion with private beach access.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2020/09/01/03/05/buildings-5534062_640.jpg" class="card-img-top" alt="Property 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Modern Apartment</h5>
+                        <p class="card-text">$3,800,000</p>
+                        <p>A sleek and modern apartment in a prime location.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/02/22/47/architecture-2573839_640.jpg" class="card-img-top" alt="Property 5">
+                    <div class="card-body">
+                        <h5 class="card-title">City Loft</h5>
+                        <p class="card-text">$5,900,000</p>
+                        <p>A stylish loft with panoramic city views.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2012/08/16/08/19/building-54472_640.jpg" class="card-img-top" alt="Property 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Lake House</h5>
+                        <p class="card-text">$2,800,000</p>
+                        <p>A beautiful lakefront property with private dock.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/06/08/22/architecture-2590236_640.jpg" class="card-img-top" alt="Property 7">
+                    <div class="card-body">
+                        <h5 class="card-title">Country Estate</h5>
+                        <p class="card-text">$3,200,000</p>
+                        <p>A sprawling estate surrounded by lush greenery.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/06/02/56/architecture-2588099_640.jpg" class="card-img-top" alt="Property 8">
+                    <div class="card-body">
+                        <h5 class="card-title">Luxury Cottage</h5>
+                        <p class="card-text">$3,500,000</p>
+                        <p>A charming cottage perfect for a serene getaway.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/06/08/22/architecture-2590236_640.jpg" class="card-img-top" alt="Property 9">
+                    <div class="card-body">
+                        <h5 class="card-title">Suburban Home</h5>
+                        <p class="card-text">$4,800,000</p>
+                        <p>A cozy home located in a quiet suburban neighborhood.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://cdn.pixabay.com/photo/2021/01/31/09/55/buildings-5966403_640.jpg" class="card-img-top" alt="Property 10">
+                    <div class="card-body">
+                        <h5 class="card-title">Rustic Cabin</h5>
+                        <p class="card-text">$6,650,000</p>
+                        <p>A rustic cabin surrounded by pristine nature.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </section>
+        
+            <!-- Order Form Section -->
+            <section id="order" class="container py-5">
+                <h2 class="text-center mb-4" style="color: #ffd700;">Order Your Dream Property</h2>
+                <div class="form-section">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="property" class="form-label">Selected Property</label>
+                            <select class="form-select" id="property" required>
+                                <option value="Luxury Villa">Luxury Villa</option>
+                                <option value="Penthouse Suite">Penthouse Suite</option>
+                                <option value="Beachfront Mansion">Beachfront Mansion</option>
+                                <option value="Modern Apartment">Modern Apartment</option>
+                                <option value="City Loft">City Loft</option>
+                                <option value="Lake House">Lake House</option>
+                                <option value="Country Estate">Country Estate</option>
+                                <option value="Luxury Cottage">Luxury Cottage</option>
+                                <option value="Suburban Home">Suburban Home</option>
+                                <option value="Rustic Cabin">Rustic Cabin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Submit Order</button>
+                    </form>
+                </div>
+            </section>
+        
+            <!-- Footer -->
+            <footer>
+                <p>&copy; 2024 Luxury Realty. All rights reserved.</p>
+            </footer>
+        
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxTXHYBNQ2Wq8N_lbz_U-EleRYtWY0IAgL-taxsMwrTZ3gGOGPUVDQDIEOttcztkRZmbA/exec';
+        
+            document.querySelector('form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    property: document.getElementById('property').value,
+                    message: document.getElementById('message').value
+                };
+        
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert('Order submitted successfully!');
+                    document.querySelector('form').reset();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Failed to submit order. Please try again.');
+                });
+            });
+        </script>         
+        </html>
