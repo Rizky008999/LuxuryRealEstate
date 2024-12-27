@@ -266,34 +266,31 @@
             </footer>
         
              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxTXHYBNQ2Wq8N_lbz_U-EleRYtWY0IAgL-taxsMwrTZ3gGOGPUVDQDIEOttcztkRZmbA/exec';
+   <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTXHYBNQ2Wq8N_lbz_U-EleRYtWY0IAgL-taxsMwrTZ3gGOGPUVDQDIEOttcztkRZmbA/exec';
 
-        document.querySelector('form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+    document.querySelector('#orderForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-            // Ambil elemen form
-            const form = e.target;
+        const form = e.target;
+        const formData = new FormData(form);
 
-            // Kirim data menggunakan FormData
-            const formData = new FormData(form);
+        try {
+            const response = await fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            });
 
-            try {
-                const response = await fetch(scriptURL, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    alert('Order submitted successfully!');
-                    form.reset(); // Reset form setelah sukses
-                } else {
-                    throw new Error('Failed to submit order.');
-                }
-            } catch (error) {
-                alert(error.message); // Menampilkan pesan error jika gagal
+            if (response.ok) {
+                alert('Formulir berhasil dikirim!');
+                form.reset();
+            } else {
+                throw new Error('Gagal mengirim formulir. Coba lagi.');
             }
-        });
-    </script>
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+</script>
 </body>
 </html>
